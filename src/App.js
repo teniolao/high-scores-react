@@ -1,11 +1,27 @@
+import React, { useState } from "react";
 import "./App.css";
-import React from "react";
-import Table from "./Table";
+import allCountryScores from "./scores";
+import Header from "./Header";
+import ToggleButton from "./ToggleButton";
+import TableDescending from "./TableDescending";
+import TableAscending from "./TableAscending";
 
 function App() {
+  const [sortScore, setSortScore] = useState(true);
+
+  function changeOrder() {
+    sortScore ? setSortScore(false) : setSortScore(true);
+  }
+
   return (
-    <div>
-      <Table />
+    <div className="App">
+      <Header />
+      <ToggleButton changeOrder={changeOrder} />
+      {sortScore ? (
+        <TableDescending data={allCountryScores} />
+      ) : (
+        <TableAscending data={allCountryScores} />
+      )}
     </div>
   );
 }
