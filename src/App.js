@@ -10,7 +10,7 @@ function App() {
   const [sortScore, setSortScore] = useState(true);
 
   function changeOrder() {
-    sortScore ? setSortScore(false) : setSortScore(true);
+    setSortScore((prevState) => !prevState);
   }
 
   return (
